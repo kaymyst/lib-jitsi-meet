@@ -1432,6 +1432,19 @@ JitsiConference.prototype.muteParticipant = function(id) {
     this.room.muteParticipant(participant.getJid(), true);
 };
 
+
+/**
+ * Mutes a participants video.
+ * @param {string} id The id of the participant to mute the video of.
+ */
+JitsiConference.prototype.muteParticipantVideo = function(id) {
+    const participant = this.getParticipantById(id);
+
+    if (!participant) {
+        return;
+    }
+    this.room.muteParticipantVideo(participant.getJid(), true);
+};
 /* eslint-disable max-params */
 
 /**

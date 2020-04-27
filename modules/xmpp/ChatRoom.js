@@ -1444,6 +1444,29 @@ export default class ChatRoom extends Listenable {
     }
 
     /**
+     * Mutes remote participants video.
+     * @param jid of the participant
+     * @param mute
+     */
+    muteParticipantVideo(jid, mute) {
+        logger.info('set mute video', mute);
+        const iqToFocus = $iq(
+            { to: this.focusMucJid,
+                type: 'set' })
+            .c('video-mute', {
+                xmlns: 'http://jitsi.org/jitmeet/video',
+                jid
+            })
+            .t(mute.toString())
+            .up();
+
+        this.connection.sendIQ(
+            iqToFocus,
+            result => logger.log('set mute video', result),
+            error => logger.log('set mute video error', error));
+    }
+
+    /**
      * TODO: Document
      * @param iq
      */
