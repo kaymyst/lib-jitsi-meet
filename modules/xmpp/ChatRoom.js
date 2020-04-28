@@ -1448,7 +1448,7 @@ export default class ChatRoom extends Listenable {
      * @param jid of the participant
      * @param mute
      */
-    muteParticipantVideo(jid, mute) {
+    muteVideoParticipant(jid, mute) {
         logger.info('set mute video', mute);
         const iqToFocus = $iq(
             { to: this.focusMucJid,
